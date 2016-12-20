@@ -57,11 +57,15 @@
           </tr>
 
           <%
-            List<Message> messageList = request.getAttribute("messageList");
+            List<Message> messageList = (List)request.getAttribute("messageList");
+            for (Message message:messageList){
           %>
+            <tr>
 
-
-
+            </tr>
+          <%
+            }
+          %>
           <%--<c:forEach items="${messageList}" var="message" varStatus="status">--%>
             <%--<tr <c:if test="${status.index % 2 != 0}">style='background-color:#ECF6EE;'</c:if>>--%>
             <%--<td><input type="checkbox"  name="id" value="${message.id}"/></td>--%>
