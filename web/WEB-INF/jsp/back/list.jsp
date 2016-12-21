@@ -24,7 +24,7 @@
 </head>
 
 <body style="background: #e1e9eb;">
-<form action="<%= basePath %>List.action" id="mainForm" method="post">  //表单以post方式提交到List.action
+<form action="<%= basePath %>List.action" id="mainForm" method="post">
   <input type="hidden" name="currentPage" id="currentPage" value=" "/>
   <div class="right">
     <div class="current">当前位置：<a href="javascript:void(0)" style="color:#6E6E6E;">内容管理</a> &gt; 内容列表</div>
@@ -55,31 +55,23 @@
             <th>描述</th>
             <th>操作</th>
           </tr>
-
           <%
             List<Message> messageList = (List)request.getAttribute("messageList");
-            for (Message message:messageList){
+            for (int i = 0;i < messageList.size();i++){
           %>
-            <tr>
-
+            <tr style=<%=(i % 2 == 0)?"background-color:#e1e9eb;":"background-color:#ECF6EE;"%>>
+              <td><input type="checkbox" name="id" value="<%=messageList.get(i).getId()%>"></td>
+              <td><%=(i+1)%></td>
+              <td><%=messageList.get(i).getCommand()%></td>
+              <td><%=messageList.get(i).getDescription()%></td>
+              <td>
+                <a href="#">修改</a>&nbsp;&nbsp;&nbsp;
+                <a href="<%=basePath%>DeleteOneServlet.action?id=<%=messageList.get(i).getId()%>">删除</a>
+              </td>
             </tr>
           <%
             }
           %>
-          <%--<c:forEach items="${messageList}" var="message" varStatus="status">--%>
-            <%--<tr <c:if test="${status.index % 2 != 0}">style='background-color:#ECF6EE;'</c:if>>--%>
-            <%--<td><input type="checkbox"  name="id" value="${message.id}"/></td>--%>
-            <%--<td>${status.index + 1}</td>--%>
-            <%--<td>${message.command}</td>--%>
-            <%--<td>${message.description}</td>--%>
-            <%--<td>--%>
-              <%--<a href="#">修改</a>&nbsp;&nbsp;&nbsp;--%>
-              <%--<a href="${basePath}DeleteOneServlet.action?id=${message.id}">删除</a>--%>
-            <%--</td>--%>
-            <%--</tr>--%>
-          <%--</c:forEach>--%>
-
-
           </tbody>
         </table>
         <div class='page fix'>
