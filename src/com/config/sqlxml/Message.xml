@@ -5,6 +5,7 @@
 
 <mapper namespace="Message">
 
+
   <resultMap type="com.bean.Message" id="MessageResult">  <!--其id为MessageResult，对应下面的resultMap  type为要给赋值的bean-->
     <id column="ID" jdbcType="INTEGER" property="id"/>
     <result column="COMMAND" jdbcType="VARCHAR" property="command"/>
