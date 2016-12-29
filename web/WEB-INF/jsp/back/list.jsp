@@ -16,7 +16,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+  <%--<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />--%>
   <title>内容列表页面</title>
   <link href="<%= basePath %>resources/css/all.css" rel="stylesheet" type="text/css" />
   <script src="<%= basePath %>resources/js/common/jquery-1.8.0.min.js"></script>
@@ -35,11 +35,12 @@
         <tr>
           <td width="90" align="right">指令名称：</td>
           <td>
-            <input name="command" type="text" class="allInput" value=" "/>
+            <%--此处要用el表达式来设置value的值，否则不会显示空白而是显示null--%>
+            <input name="command" type="text" class="allInput" value="${command}"/>
           </td>
           <td width="90" align="right">描述：</td>
           <td>
-            <input name="description" type="text" class="allInput" value=" "/>
+            <input name="description" type="text" class="allInput" value="${description}"/>
           </td>
           <td width="85" align="right"><input type="submit" class="tabSub" value="查 询" /></td>
         </tr>
@@ -66,7 +67,7 @@
               <td><%=messageList.get(i).getDescription()%></td>
               <td>
                 <a href="#">修改</a>&nbsp;&nbsp;&nbsp;
-                <a href="<%=basePath%>DeleteOneServlet.action?id=<%=messageList.get(i).getId()%>">删除</a>
+                <a href="<%=basePath%>DeleteOneServlet.action?id=<%=messageList.get(i).getId()%>" onclick="deleteOne();">删除</a>
               </td>
             </tr>
           <%

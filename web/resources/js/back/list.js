@@ -7,6 +7,15 @@ function deleteBatch(basePath) {
 }
 
 /**
+ * 调用后台单独删除方法
+ */
+function deleteOne() {
+	if (!confirm("确认要删除？")) {
+		window.event.returnValue = false;
+	}
+}
+
+/**
  * 修改当前页码，调用后台重新查询
  */
 function changeCurrentPage(currentPage) {
